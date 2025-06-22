@@ -108,7 +108,7 @@ void hapusBarang(toko*& head,int id) {
         delete curr;
         cout << "Barang dengan index ID " << id << " berhasil dihapus.\n";
     }
-    
+
     void editBarang(toko* head, int idEdit) {
     if (head == nullptr) {
         cout << "Daftar kosong, tidak ada yang bisa diedit.\n";
@@ -137,6 +137,45 @@ void hapusBarang(toko*& head,int id) {
     cin >> temp->stok;
 
     cout << "Barang berhasil diperbarui!\n";
+}
+
+    void insertBarang(toko*& head, int setelahID) {
+    int id, stok;
+    string nama, kategori, harga;
+    toko* current = head;
+    while (current != nullptr && current->id != setelahID) {
+        current = current->next;
+    }
+    if (current == nullptr) {
+        cout << "ID " << setelahID << " tidak ditemukan. Gagal menyisipkan.\n";
+        return;
+    }
+    cout << "Masukkan ID baru: ";
+    cin >> id;
+    cin.ignore();
+    toko* cek = head;
+    while (cek != nullptr) {
+        if (cek->id == id) {
+            cout << "ID sudah digunakan! Barang tidak ditambahkan.\n";
+            return;
+        }
+        cek = cek->next;
+    }
+
+    cout << "Nama: ";
+    getline(cin, nama);
+    cout << "Kategori: ";
+    getline(cin, kategori);
+    cout << "Harga: ";
+    getline(cin, harga);
+    cout << "Stok: ";
+    cin >> stok;
+
+    toko* barangBaru = listBarang(id, nama, kategori, harga, stok);
+    barangBaru->next = current->next;
+    current->next = barangBaru;
+
+    cout << "Barang berhasil disisipkan setelah ID " << setelahID << ".\n";
 }
 
 int main(){
