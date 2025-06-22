@@ -46,6 +46,42 @@ void tampilkanBarang(toko* head){
     }
 }
 
+void tambahBarang(toko*& head) {
+  int id;
+  string nama, kategori, harga;
+  int stok;
+    cout << "Masukkan ID: ";
+    cin >> id;
+    cin.ignore();
+    toko* cek = head;
+    while (cek != nullptr) {
+        if (cek->id == id) {
+            cout << "ID sudah digunakan! Barang tidak ditambahkan.\n";
+            return;
+        }
+        cek = cek->next;
+    }
+    cout << "Nama: ";
+    getline(cin, nama);
+    cout << "Kategori: ";
+    getline(cin, kategori);
+    cout << "Harga: ";
+    getline(cin, harga);
+    cout << "Stok: ";
+    cin >> stok;
+    
+     toko* barangBaru = listBarang(id, nama, kategori, harga, stok);
+         if (head == nullptr) {
+             head = barangBaru;
+        } else {
+            toko* temp = head;
+        while (temp->next != nullptr) {
+            temp = temp->next;
+        }
+            temp->next = barangBaru;
+    }
+}
+
 int main(){
 
 }
