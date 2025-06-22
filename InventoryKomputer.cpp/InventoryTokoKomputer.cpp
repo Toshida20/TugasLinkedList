@@ -82,6 +82,33 @@ void tambahBarang(toko*& head) {
     }
 }
 
+void hapusBarang(toko*& head,int id) {
+    if (head == nullptr) {
+        cout << "Daftar kosong, tidak ada yang dihapus.\n";
+        return;
+    }
+    if (head->id == id) {
+        toko* hapus = head;
+        head = head->next;
+        delete hapus;
+        cout << "Barang dengan index ID " << id << " berhasil dihapus.\n";
+        return;
+    }
+        toko* prev = head;
+    toko* curr = head->next;
+        while (curr != nullptr && curr->id != id) {
+            prev = curr;
+            curr = curr->next;
+        }
+        if (curr == nullptr) {
+            cout << "Barang dengan index ID " << id << " tidak ditemukan.\n";
+            return;
+        }
+        prev->next = curr->next;
+        delete curr;
+        cout << "Barang dengan index ID " << id << " berhasil dihapus.\n";
+    }
+
 int main(){
 
 }
