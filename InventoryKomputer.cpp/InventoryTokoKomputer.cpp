@@ -179,5 +179,73 @@ void hapusBarang(toko*& head,int id) {
 }
 
 int main(){
+    toko* head = nullptr;
+    int pilihan, idHapus,idTarget;
+    do{
+        system("cls");
+        cout << "===== Toko Komputer   =====\n";
+        cout << "1. Tampilkan Barang\n";
+        cout << "2. Tambah Barang baru\n";
+        cout << "3. Hapus Barang\n";
+        cout << "4. Edit Barang\n";
+        cout << "5. Insert Barang\n";
+        cout << "0. Keluar dari Inventori\n";
+        cout << "Masukkan pilihan: ";
+        cin >> pilihan;
+        
+        switch (pilihan)
+        {
+          
+    case 1:
+        system("cls");
+        cout << "Menampilkan daftar inventaris..." << endl;
+        tampilkanBarang(head);
+        cout << "Tekan Enter untuk melanjutkan..." << endl;
+        cin.ignore();
+        cin.get(); 
+        break;
+    case 2:
+        system("cls");
+        cout << "Menambahkan barang baru..." << endl;
+        tambahBarang(head);
+        cout << "Tekan Enter untuk melanjutkan..." << endl;
+        cin.ignore();
+        cin.get();
+        break;
+    case 3:
+        system("cls");
+        cout << "Masukkan ID barang yang ingin dihapus: ";
+        cin >> idHapus;
+        hapusBarang(head, idHapus);
+        break;
+    case 4:
+        system("cls");
+        cout << "Masukkan ID barang yang ingin diedit: ";
+        cin >> idHapus; 
+        editBarang(head, idHapus);
+        cout << "Tekan Enter untuk melanjutkan..." << endl;
+        cin.ignore();
+        cin.get();
+        break;
+    case 5:
 
+    system("cls");
+    cout << "Masukkan ID barang setelah mana kamu ingin menyisipkan: ";
+    cin >> idTarget;
+    insertBarang(head, idTarget);
+    cout << "Tekan Enter untuk melanjutkan..." << endl;
+    cin.ignore();
+    cin.get();
+    break;
+
+    case 0:
+        system("cls");
+        cout << "Keluar dari program..." << endl;
+        break;
+        default:
+        cout << "Pilihan tidak valid. Silakan coba lagi." << endl;
+        break;  
+    }
+    }while(pilihan != 0);
+    return 0;
 }
