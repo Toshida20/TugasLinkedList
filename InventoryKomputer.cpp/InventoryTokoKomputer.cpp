@@ -29,6 +29,23 @@ toko* listBarang(int id, string nama, string kategori, string harga, int stok) {
     return barangBaru;
 }
 
+void tampilkanBarang(toko* head){ 
+    if(head==nullptr){
+        cout << "Daftar barang kosong." << endl;
+        return;
+    }
+    toko* temp=head;
+    while(temp != nullptr) {
+        cout << "ID: " << temp->id << endl;
+        cout << "Nama: " << temp->nama << endl;
+        cout << "Kategori: " << temp->kategori << endl;
+        cout << "Harga: " << temp->harga << endl;
+        cout << "Stok: " << temp->stok << endl;
+        cout << "------------------------" << endl;
+        temp = temp->next;
+    }
+}
+
 int main(){
 
 }
